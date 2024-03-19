@@ -1,18 +1,12 @@
-<h1>Create a Booking</h1>
-
-<%= form_with(model: [ @service, @booking ], local: true) do |form| %>
-
-  <div class="field">
-    <%= form.label :start_date_time %>
-    <%= form.datetime_select :start_date_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date_time %>
-    <%= form.datetime_select :end_date_time %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="container">
+  <h1>Create a Booking</h1>
+  <%= simple_form_for([@service, @booking]) do |f| %>
+      <ul>
+          <li>
+            <%= f.input :service_id, collection: Service.all %>
+            <%= f.input :start_date_time %>
+          </li>
+      </ul>
+      <%= f.button :submit, 'Save' %>
+      <% end %>
+</div>

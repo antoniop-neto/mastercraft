@@ -1,0 +1,12 @@
+<div class="container">
+  <h3><%= "Welcome #{current_user.first_name} #{current_user.last_name}," %></h3>
+    <h3>Your Services:</h3>
+
+    <% @services.each do |service| %>
+      <ul>
+        <li><%= service.name %></li>
+        <li><%= service.price %></li>
+        <li><%= service.start_time %></li>
+      </ul>
+    <% end %>
+</div>
