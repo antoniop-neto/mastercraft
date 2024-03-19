@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # As a user, I want to be able to view the list of available services a specific provider provides
+  resources :users, only: [:show]
 end
