@@ -15,6 +15,19 @@ class BookingsController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.update(booking_params)
+  end
+
+  def destroy
+    @booking.Booking.find(params[:id])
+    @booking.destroy
+    #redirect_to bookings_path, status: :see_other
 
   private
 
