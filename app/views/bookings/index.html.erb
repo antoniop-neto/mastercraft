@@ -1,0 +1,31 @@
+<div class="container">
+  <h3><%= "Welcome #{current_user.first_name} #{current_user.last_name}," %></h3>
+  <% if current_user.bookings.length > 0 %>
+  <h4>Your Bookings</h4>
+  <% else %>
+    <h4>You don't have bookings yet.</h4>
+  <% end %>
+  <br>
+
+  <div class="card-product-container">
+    <% current_user.bookings.each do |booking| %>
+    <div class="card-trip">
+
+        <strong><%= booking.service.name %></strong>
+
+        <div class="card-trip-infos">
+          <ul>
+            <p><%= "Start Date: #{booking.start_date}" %></p>
+            <p><%= "End Date: #{booking.end_date}" %></p>
+            <p><%= "Providers: #{booking.service.user.first_name} #{booking.service.user.last_name} " %></p>
+            <h2>
+              <%= link_to "Cancel", delete_booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+              <%= link_to "Review", new_review_path(booking.service), class: "btn btn-info" %>
+            </h2>
+          </ul>
+        </div>
+
+    </div>
+    <% end %>
+  </div>
+</div>
