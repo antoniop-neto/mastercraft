@@ -1,0 +1,18 @@
+<h1>Create a Booking</h1>
+
+<%= form_with(model: [ @service, @booking ], local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :start_date_time %>
+    <%= form.datetime_select :start_date_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date_time %>
+    <%= form.datetime_select :end_date_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

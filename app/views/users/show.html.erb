@@ -1,0 +1,20 @@
+<div class = "container">
+  <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+  <br>
+  <h3>Services Provided:</h3>
+
+  <div class="container-card">
+    <br>
+      <% @services.each do |service| %>
+      <div class="card-trip">
+        <h2 style="text-align: center;"><%= service.name %></h2>
+          <ul>
+            <p><%= "Price: #{service.price}" %></p>
+            <p><%= "Address: #{service.address}" %></p>
+            <h2><%= link_to "Book", "text.html", class: "btn btn-danger"%></h2>
+          </ul>
+      </div>
+      <br>
+      <% end %>
+  </div>
+</div>
