@@ -4,7 +4,8 @@
       <ul>
           <li>
             <%= f.input :service_id, collection: Service.all %>
-            <%= f.input :start_date_time %>
+            <%= f.input :date %>
+            <%= f.input :start_hour %>
           </li>
       </ul>
       <%= f.button :submit, 'Save' %>

@@ -10,19 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_161829) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_20_120042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "service_id", null: false
-    t.datetime "start_date_time", precision: nil
-    t.datetime "end_date_time", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "start_hour"
+    t.date "date"
     t.index ["service_id"], name: "index_bookings_on_service_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "dayslots", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "slots", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dayslots_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -39,8 +47,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_161829) do
     t.integer "price"
     t.string "name"
     t.string "address"
-    t.datetime "start_time", precision: nil
-    t.datetime "end_time", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_services_on_user_id"
@@ -58,12 +64,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_161829) do
     t.string "last_name"
     t.string "phone"
     t.string "address"
+    t.integer "start_hour"
+    t.integer "end_hour"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "bookings", "services"
   add_foreign_key "bookings", "users"
+  add_foreign_key "dayslots", "users"
   add_foreign_key "reviews", "bookings"
   add_foreign_key "services", "users"
 end

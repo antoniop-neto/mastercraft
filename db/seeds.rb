@@ -22,7 +22,7 @@ puts "adding services"
 service1 = Service.create!(user: user1, price: 50, name: "haircut", address: "10 Downing Street")
 service2 = Service.create!(user: user1, price: 100, name: "tattoo", address: "10 Downing Street")
 puts "adding bookings"
-booking1 = Booking.create!(user: user2, service:service1, start_date_time: Time.current, end_date_time: 1.hour.from_now)
+booking1 = Booking.create!(user: user2, service:service1, date: Today , end_date_time: 1.hour.from_now)
 booking2 = Booking.create!(user: user2, service:service2, start_date_time: 2.hour.from_now, end_date_time: 3.hour.from_now)
 puts "adding reviews"
 review1 = Review.create!(booking: booking1, rating: 4.9, comment: "amaze")
