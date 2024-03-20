@@ -1,8 +1,4 @@
 <div class="container">
-
-</div>
-
-
   <h1>Next Available Appointments for <%= @service.name %></h1>
   <% @service.user.dayslots.each do |dayslot|%>
     <%= dayslot.date.strftime("%B %d, %Y") %>
@@ -12,3 +8,4 @@
     <% end %>
     <br>
   <% end %>
+</div>

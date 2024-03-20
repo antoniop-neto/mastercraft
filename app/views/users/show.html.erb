@@ -11,7 +11,7 @@
           <ul>
             <p><%= "Price: #{service.price}" %></p>
             <p><%= "Address: #{service.address}" %></p>
-            <h2><%= link_to "Book", new_service_booking_path(service_id: service.id), class: "btn btn-danger"%></h2>
+            <h2><%= link_to "View Appointments", service_path(service), class: "btn btn-danger"%></h2>
           </ul>
       </div>
       <br>
@@ -19,11 +19,16 @@
   </div>
 
   <h3>Reviews</h3>
-  <%  @user.services.each do |service| %>
-    <% service.bookings.each do |booking| %>
-      <p><%= booking.review.rating %></p>
-      <p><%= booking.review.comment %></p>
+  <% if @user.services.any? %>
+    <%  @user.services.each do |service| %>
+      <% if service.bookings.any? %>
+        <% service.bookings.each do |booking| %>
+          <% if booking.review.present? %>
+            <p><%= booking.review.rating %></p>
+            <p><%= booking.review.comment %></p>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
-
 </div>
