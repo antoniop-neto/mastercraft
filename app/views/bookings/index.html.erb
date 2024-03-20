@@ -1,7 +1,7 @@
 <div class="container">
   <h3><%= "Welcome #{current_user.first_name} #{current_user.last_name}," %></h3>
   <% if current_user.bookings.length > 0 %>
-  <h4>Your Bookings</h4>
+  <h4>Your Client Bookings</h4>
   <% else %>
     <h4>You don't have bookings yet.</h4>
   <% end %>
