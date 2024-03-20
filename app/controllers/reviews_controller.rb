@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_service, only: [:new, :create]
+  before_action :set_booking, only: [:new, :create]
 
   def new
     @review = Review.new
@@ -7,19 +7,19 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.service = @service
+    @review.booking = @booking
     if @review.save
-      redirect_to bookings_path
+      redirect_to bookings_path, notice: 'Review was successfully created.'
     else
-      render :new, status: :unprocessable_entity
-      # this is when you fail to book, you will come back to new booking page
+      # render the 'new' form with error messages
+      render :new
     end
   end
 
   private
 
-  def set_service
-    @service = service.find(params[:service_id])
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
   end
 
   def review_params
