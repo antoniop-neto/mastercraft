@@ -6,5 +6,6 @@ class Service < ApplicationRecord
   def users_have_booked
     self.bookings.map {|booking| booking.user }
   end
-
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
