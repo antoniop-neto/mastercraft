@@ -1,0 +1,8 @@
+<h1>Providers</h1>
+<ul>
+  <% @user.each do |user| %>
+  <% if user.services.any? %>
+    <li><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%></li>
+  <% end %>
+<% end %>
+</ul>

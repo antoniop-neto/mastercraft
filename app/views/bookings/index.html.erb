@@ -15,12 +15,12 @@
 
         <div class="card-trip-infos">
           <ul>
-            <p><%= "Start Date: #{booking.start_date}" %></p>
-            <p><%= "End Date: #{booking.end_date}" %></p>
-            <p><%= "Providers: #{booking.service.user.first_name} #{booking.service.user.last_name} " %></p>
+            <p><%= "Start Date: #{booking.start_date_time}" %></p>
+            <p><%= "End Date: #{booking.end_date_time}" %></p>
+            <p><%= "Customer: #{booking.user.first_name} #{booking.service.user.last_name} " %></p>
             <h2>
-              <%= link_to "Cancel", delete_booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
-              <%= link_to "Review", new_review_path(booking.service), class: "btn btn-info" %>
+              <%# <%= link_to "Cancel", delete_booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+              <%# <%= link_to "Review", new_review_path(booking.service), class: "btn btn-info" %>
             </h2>
           </ul>
         </div>
