@@ -1,5 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:edit, :destroy]
+
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def new
     @booking = Booking.new
     @service = Service.find(params[:service_id])
