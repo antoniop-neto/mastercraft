@@ -17,4 +17,14 @@
       <br>
       <% end %>
   </div>
+
+<h3>Reviews</h3>
+  <%  @user.services.each do |service| %>
+    <% service.bookings.each do |booking| %>
+      <% if booking.review %>
+        <p><%= booking.review.rating %></p>
+        <p><%= booking.review.comment %></p>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
