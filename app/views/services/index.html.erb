@@ -1,3 +1,17 @@
+<div class="container">
+  <h1>all services</h1>
+  <% @services.each do |service| %>
+    <ul>
+    <li><%= service.name %></li>
+    <li><%= service.price %></li>
+
+    </ul>
+  <% end %>
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
 <div>
   <div>
     <div>

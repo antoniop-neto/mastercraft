@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   get "services/manage", to: "services#manage", as: :manage_services
-  resources :bookings, only: [:index, :show, :edit, :update, :destroy]
+  resources :bookings, only: [:index, :show, :edit, :update, :destroy] do
+    resources :reviews, only: [:new,:create]
+  end
 
 
   resources :services, only: [:index, :show, :new, :create, :destroy] do
@@ -19,4 +21,5 @@ Rails.application.routes.draw do
 
   # As a user, I want to be able to view the list of available services a specific provider provides
   resources :users, only: [:index, :show]
+
 end

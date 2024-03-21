@@ -1,6 +1,18 @@
 class ServicesController < ApplicationController
   def index
     @services = Service.all
+    
+  # The `geocoded` scope filters only service with coordinates
+    @markers = @services.geocoded.map do |service|
+      {
+        lat: service.latitude,
+        lng: service.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {service: service}),
+        marker_html: render_to_string(partial: "marker", locals: {service: service})
+      }
+    end
+
+    # searchbar function
     if params[:query].present?
       sql_subquery = <<~SQL
         services.name @@ :query
@@ -46,4 +58,5 @@ class ServicesController < ApplicationController
   def service_params
     params.require(:service).permit(:name, :price, :address, :photo)
   end
+
 end
