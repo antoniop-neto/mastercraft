@@ -1,6 +1,15 @@
 class ServicesController < ApplicationController
   def index
     @services = Service.all
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        services.name @@ :query
+        OR services.address @@ :query
+        OR users.last_name @@ :query
+        OR users.first_name @@ :query
+      SQL
+      @services = @services.joins(:user).where(sql_subquery, query: params[:query])
+    end
   end
 
   def show
@@ -34,6 +43,6 @@ class ServicesController < ApplicationController
   private
 
   def service_params
-    params.require(:service).permit(:name, :price, :address)
+    params.require(:service).permit(:name, :price, :address, :photo)
   end
 end
