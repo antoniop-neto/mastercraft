@@ -17,14 +17,14 @@ Service.delete_all
 User.delete_all
 
 puts "adding users"
-user1 = User.create!(email: "peter@gmail.com", first_name: "Peter", last_name: "Parker", password: "123456", password_confirmation: "123456", start_hour: 9, end_hour: 17)
-user2 = User.create!(email: "jane@gmail.com", first_name: "Jane", last_name: "Austen", password: "123456", password_confirmation: "123456", start_hour: 10, end_hour: 16)
+user1 = User.create!(email: "peter@gmail.com", first_name: "Peter", last_name: "Parker", password: "123456", password_confirmation: "123456", start_hour: 9, end_hour: 17, provider: true, phone: "+44 20 7946 0018")
+user2 = User.create!(email: "jane@gmail.com", first_name: "Jane", last_name: "Austen", password: "123456", password_confirmation: "123456", start_hour: 10, end_hour: 16, provider: true, phone: "+49 173 4234 8349 ")
 user3 = User.create!(email: "barack@gmail.com", first_name: "Barack", last_name: "Obama", password: "123456", password_confirmation: "123456")
 
 puts "adding services"
-service1 = Service.create!(user: user1, price: 50, name: "haircut", address: "10 Downing Street")
-service2 = Service.create!(user: user1, price: 100, name: "tattoo", address: "10 Downing Street")
-service3 = Service.create!(user: user2, price: 150, name: "massage", address: "12 Ackerstrasse")
+service1 = Service.create!(user: user1, price: 50, name: "haircut", address: "10 Downing Street, London")
+service2 = Service.create!(user: user1, price: 100, name: "tattoo", address: "10 Downing Street, London")
+service3 = Service.create!(user: user2, price: 150, name: "massage", address: "12 Ackerstrasse, Berlin")
 
 puts "adding bookings"
 booking1 = Booking.create!(user: user2, service: service1, date: Date.new(2024, 3, 23), start_hour: 10)
