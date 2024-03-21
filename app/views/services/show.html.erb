@@ -1,11 +1,11 @@
 <div class="container">
   <h1>Next Available Appointments for <%= @service.name %></h1>
   <%= cl_image_tag @service.photo.key, height: 150, width: 1000, crop: :fill %>
-  <% @service.user.dayslots.each do |dayslot|%>
+  <% @dayslots.each do |dayslot|%>
     <%= dayslot.date.strftime("%B %d, %Y") %>
     <br>
     <% dayslot.slots.each do |timeslot| %>
-      <%= link_to timeslot, "", class: "btn btn-primary m-2" %>
+      <%= link_to "#{timeslot}:00", new_service_booking_path(@service, date: dayslot.date, timeslot: timeslot), class: "btn btn-primary m-2" %>
     <% end %>
     <br>
   <% end %>

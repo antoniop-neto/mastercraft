@@ -8,6 +8,8 @@ class BookingsController < ApplicationController
 
   def new
     @booking = @service.bookings.build
+    @selected_date = params[:date]
+    @selected_timeslot = params[:timeslot]
     @hours_range = (@service.user.start_hour..@service.user.end_hour).to_a
   end
 
@@ -16,8 +18,16 @@ class BookingsController < ApplicationController
     @booking = @service.bookings.build(booking_params)
     # @booking.service = @service
     @booking.user = current_user # getting the current user
+    dayslots = @service.user.dayslots
 
     if @booking.save
+      # delete the timeslot
+      dayslots.where(date: @booking.date).each do |dayslot|
+        if dayslot.slots.include?(@booking.start_hour)
+          dayslot.slots.delete(@booking.start_hour)
+          dayslot.save
+        end
+      end
       redirect_to @booking, notice: 'Booking was successfully created.'
     else
       render :new, status: :unprocessable_entity

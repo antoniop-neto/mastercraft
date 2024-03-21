@@ -41,12 +41,12 @@ start_date = Date.new(2024, 3, 25)
 end_date = Date.new(2024, 3, 29)
 
 (start_date..end_date).each do |date|
-  slots_array = (user1.start_hour..user1.end_hour).to_a
+  slots_array = (user1.start_hour..user1.end_hour-1).to_a
   Dayslot.create!(date: date, slots: slots_array, user: user1)
 end
 
 (start_date..end_date).each do |date|
-  slots_array = (user2.start_hour..user2.end_hour).to_a
+  slots_array = (user2.start_hour..user2.end_hour-1).to_a
   Dayslot.create!(date: date, slots: slots_array, user: user2)
 end
 puts "done"
