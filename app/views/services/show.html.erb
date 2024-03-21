@@ -1,5 +1,6 @@
 <div class="container">
   <h1>Next Available Appointments for <%= @service.name %></h1>
+  <%= cl_image_tag @service.photo.key, height: 150, width: 1000, crop: :fill %>
   <% @dayslots.each do |dayslot|%>
     <%= dayslot.date.strftime("%B %d, %Y") %>
     <br>
