@@ -11,5 +11,22 @@
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
+<div>
+  <div>
+    <div>
+      <div class="container">
+        <div class="cards">
+          <% @services.each do |service| %>
+          <%= link_to service_path(service), style: "text-decoration: none;" do %>
+            <% background_image = service.photo.key.present? ? "url('#{cl_image_path(service.photo.key)}')" : "url('https://i0.wp.com/www.theluxeinsider.com/wp-content/uploads/2020/10/Hair_Salons-CJ_Studio-H_Academy-02.jpg?fit=1200%2C800&ssl=1')"%>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), <%= background_image %>; background-size: cover; background-position: center;">
+            <%= service.name %>
+          </div>
+            <% end %>
+           <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

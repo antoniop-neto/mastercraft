@@ -1,4 +1,4 @@
-<div class = "container">
+<div class = "container">http://localhost:3000/users/5
   <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
   <br>
   <h3>Services Provided:</h3>
@@ -11,19 +11,24 @@
           <ul>
             <p><%= "Price: #{service.price}" %></p>
             <p><%= "Address: #{service.address}" %></p>
-            <h2><%= link_to "Book", new_service_booking_path(service_id: service.id), class: "btn btn-danger"%></h2>
+            <h2><%= link_to "View Appointments", service_path(service), class: "btn btn-danger"%></h2>
           </ul>
       </div>
       <br>
       <% end %>
   </div>
 
-<h3>Reviews</h3>
-  <%  @user.services.each do |service| %>
-    <% service.bookings.each do |booking| %>
-      <% if booking.review %>
-        <p><%= booking.review.rating %></p>
-        <p><%= booking.review.comment %></p>
+
+  <h3>Reviews</h3>
+  <% if @user.services.any? %>
+    <%  @user.services.each do |service| %>
+      <% if service.bookings.any? %>
+        <% service.bookings.each do |booking| %>
+          <% if booking.review.present? %>
+            <p><%= booking.review.rating %></p>
+            <p><%= booking.review.comment %></p>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
