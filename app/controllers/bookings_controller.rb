@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @chatroom = Chatroom.find_by(booking_id: params[:id])
   end
 
   def new
@@ -34,6 +35,7 @@ class BookingsController < ApplicationController
           dayslot.save
         end
       end
+      @chatroom = Chatroom.create(booking: @booking)
       redirect_to @booking, notice: 'Booking was successfully created.'
     else
       render :new, status: :unprocessable_entity
