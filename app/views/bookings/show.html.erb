@@ -1,5 +1,7 @@
-<h3><%= @booking.service.name %></h3>
-<p><%= "Provider: #{@booking.service.user.first_name} #{@booking.service.user.last_name}" %></p>
-<p><%= "Date: #{@booking.date}" %></p>
-<p><%= "Start Hour: #{@booking.start_hour}" %></p>
-<p><%= "Address: #{@booking.service.address}" %></p>
+<div class="container">
+  <h3><%= @booking.service.name %></h3>
+  <p><%= "Provider: #{@booking.service.user.first_name} #{@booking.service.user.last_name}" %></p>
+  <p><%= "Date: #{@booking.date}" %></p>
+  <p><%= "Start Hour: #{@booking.start_hour}" %></p>
+  <p><%= "Address: #{@booking.service.address}" %></p>
+</div>
