@@ -53,14 +53,14 @@ class BookingsController < ApplicationController
     dayslot.slots.insert(index, start_hour) unless dayslot.slots.include?(start_hour)
     dayslot.save
     @booking.destroy
-    redirect_to bookings_path, status: :see_other
+    redirect_to root_path, status: :see_other
   end
 
   def appointments
     @booking = Booking.where(user_id: current_user.id)
   end
 
- 
+
   private
 
   def set_booking
