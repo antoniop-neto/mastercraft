@@ -1,18 +1,41 @@
-<div class="container">
+<div class="main-container">
   <h1>Providers</h1>
-  <ul>
+
+  <div class="container-card">
     <% @user.each do |user| %>
-    <% if user.services.any? %>
-      <li><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%></li>
+      <% if user.provider == true %>
+
+          <div class="card-trip">
+            <%# if listing.photo.attached? %>
+              <%#= cl_image_tag listing.photo.key, height: 150, width: 200, crop: :fill %>
+            <%# end %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
+                <p>Address: <%= user.services[0].address %></p>
+                <p>Services:
+                  <% user.services.each do |service| %>
+                    <%= service.name %>
+                  <% end %>
+                </p>
+              </div>
+
+            </div>
+            <div class="button-container">
+              <%= link_to "Learn More", user_path(user), class: "btn btn-primary" %>
+              <%# <h2 class="card-trip-pricing"><%= listing.price %><%#/#h2> %>
+            </div>
+          </div>
+        <br>
+      <% end %>
     <% end %>
+  </div>
+  <br>
 
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 
-  <% end %>
-  </ul>
-
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
 </div>

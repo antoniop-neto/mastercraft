@@ -1,11 +1,32 @@
 <div class="container">
-  <h3><%= "Welcome #{current_user.first_name} #{current_user.last_name}," %></h3>
-    <h3>Your Services:</h3>
+  <h3><%= "Welcome #{@user.first_name} #{@user.last_name}," %></h3>
+  <% if @services.length > 0 %>
+  <h4>Your Services</h4>
+  <% else %>
+    <h4>You don't have any services yet.</h4>
+  <% end %>
 
+  <%= link_to "Create Service", new_service_path, class: "btn btn-info me-2" %>
+
+  <div class="card-product-container">
     <% @services.each do |service| %>
-      <ul>
-        <li><%= service.name %></li>
-        <li><%= service.price %></li>
-      </ul>
+    <div class="card-trip">
+
+        <strong><%= service.name %></strong>
+
+        <div class="card-trip-infos">
+          <ul>
+            <p><%= "Price: #{service.price}" %></p>
+            <p><%= "Address: #{service.address}" %></p>
+            <h2>
+              <%= link_to service_path(service), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger" do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </h2>
+          </ul>
+        </div>
+
+    </div>
     <% end %>
+  </div>
 </div>

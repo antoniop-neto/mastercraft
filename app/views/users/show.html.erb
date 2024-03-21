@@ -24,9 +24,11 @@
     <%  @user.services.each do |service| %>
       <% if service.bookings.any? %>
         <% service.bookings.each do |booking| %>
-          <% if booking.review.present? %>
-            <p><%= booking.review.rating %></p>
-            <p><%= booking.review.comment %></p>
+          <% if booking.reviews.any? %>
+            <% booking.reviews.each do |review| %>
+              <p><%= "Rating: #{review.rating}" %></p>
+              <p><%= "Comment: #{review.comment}" %></p>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
