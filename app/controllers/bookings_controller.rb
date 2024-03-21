@@ -1,9 +1,11 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:edit, :destroy]
+  before_action :set_booking, only: [:destroy]
   before_action :set_service, only: [:new, :create]
 
   def index
     @user = current_user
+    @sorted_bookings = current_user.bookings.order(:date, :start_hour)
+    @grouped_bookings = @sorted_bookings.group_by { |booking| booking.date }
   end
 
   def show
@@ -39,8 +41,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def edit
-  end
 
   def update
     @booking = Booking.update(booking_params)
@@ -58,6 +58,8 @@ class BookingsController < ApplicationController
 
   def appointments
     @booking = Booking.where(user_id: current_user.id)
+    @sorted_bookings = @booking.order(:date, :start_hour)
+    @grouped_bookings = @sorted_bookings.group_by { |booking| booking.date }
   end
 
 

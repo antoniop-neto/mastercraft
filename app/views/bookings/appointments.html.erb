@@ -1,6 +1,5 @@
 <div class="container">
-
-  <h3><%= "Welcome #{current_user.first_name} #{current_user.last_name}," %></h3>
+ <h3><%= "Welcome #{current_user.first_name} #{current_user.last_name}," %></h3>
   <% if @booking.length > 0 %>
   <h4>Your Appointments</h4>
   <% else %>
@@ -9,29 +8,31 @@
   <br>
 
   <div class="card-product-container">
-    <% @booking.each do |booking| %>
-    <div class="card-trip">
+    <% @grouped_bookings.each do |date, bookings| %>
+     <h3><%= date.strftime('%B %d, %Y') %></h3>
+     <div class="bookings-row">
+      <% bookings.each do |booking| %>
+          <div class="card-trip">
+              <strong><%= booking.service.name %></strong>
 
-        <strong><%= booking.service.name %></strong>
+              <div class="card-trip-infos">
+                <ul>
+                  <p><%= "Start Hour: #{booking.start_hour}:00" %></p>
+                  <p><%= "Provider: #{booking.service.user.first_name} #{booking.service.user.last_name} " %></p>
+                  <p><%= "Price: #{booking.service.price}" %></p>
+                  <p><%= "Address: #{booking.service.address}" %></p>
+                  <h2>
+                    <%= link_to 'Review', new_booking_review_path(booking.id), class: "btn btn-primary" %>
+                    <%= link_to booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger" do %>
+                      <i class="fa-solid fa-trash"></i>
+                    <% end %>
+                  </h2>
+                </ul>
+              </div>
 
-        <div class="card-trip-infos">
-          <ul>
-            <p><%= "Date: #{booking.date.strftime('%B %d, %Y')}" %></p>
-            <p><%= "Start Hour: #{booking.start_hour}:00" %></p>
-            <p><%= "Provider: #{booking.service.user.first_name} #{booking.service.user.last_name} " %></p>
-            <p><%= "Price: #{booking.service.price}" %></p>
-            <p><%= "Address: #{booking.service.address}" %></p>
-            <h2>
-              <%= link_to 'Review', new_booking_review_path(booking.id), class: "btn btn-primary" %>
-              <%= link_to booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger" do%>
-                <i class="fa-solid fa-trash"></i>
-              <% end %>
-            </h2>
-          </ul>
-        </div>
-
-    </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
-
 </div>
