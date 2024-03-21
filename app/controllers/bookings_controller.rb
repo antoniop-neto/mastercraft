@@ -2,6 +2,10 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:edit, :destroy]
   before_action :set_service, only: [:new, :create]
 
+  def index
+    @user = current_user
+  end
+
   def show
     @booking = Booking.find(params[:id])
   end
@@ -46,6 +50,12 @@ class BookingsController < ApplicationController
     @booking.destroy
     #redirect_to bookings_path, status: :see_other
   end
+
+  def appointments
+    @booking = Booking.where(user_id: current_user.id)
+  end
+
+
   private
 
   def set_booking
