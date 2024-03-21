@@ -20,7 +20,7 @@
             <p><%= "Customer: #{booking.user.first_name} #{booking.user.last_name} " %></p>
             <h2>
               <%= link_to 'Edit', edit_booking_path(booking), class: "btn btn-primary" %>
-              <%= link_to booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger" do%>
+              <%= link_to booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger" do %>
                 <i class="fa-solid fa-trash"></i>
               <% end %>
             </h2>

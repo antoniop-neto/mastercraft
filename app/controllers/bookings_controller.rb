@@ -47,15 +47,20 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    start_hour = @booking.start_hour
+    dayslot = @booking.service.user.dayslots.find_by(date: @booking.date)
+    index = dayslot.slots.index { |slot| slot > start_hour } || -1
+    dayslot.slots.insert(index, start_hour) unless dayslot.slots.include?(start_hour)
+    dayslot.save
     @booking.destroy
-    #redirect_to bookings_path, status: :see_other
+    redirect_to bookings_path, status: :see_other
   end
 
   def appointments
     @booking = Booking.where(user_id: current_user.id)
   end
 
-
+ 
   private
 
   def set_booking
