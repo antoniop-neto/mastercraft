@@ -78,4 +78,8 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:date, :start_hour)
   end
+
+  def delete_seeded_booking_slots
+  end
+
 end

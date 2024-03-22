@@ -23,6 +23,7 @@
                   <p><%= "Address: #{booking.service.address}" %></p>
                   <h2>
                     <%= link_to 'Review', new_booking_review_path(booking.id), class: "btn btn-primary" %>
+                    <%= link_to "Chat", chatroom_path(booking.chatroom) %>
                     <%= link_to booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger" do %>
                       <i class="fa-solid fa-trash"></i>
                     <% end %>

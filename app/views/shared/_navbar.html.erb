@@ -19,15 +19,16 @@
 
           </li>
           <li class="nav-item">
-            <%= link_to "My Appointments", "appointments", class: "nav-link" %>
+            <%= link_to "My Appointments", bookings_appointments_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
             <% if current_user.provider? %>
-              <%= link_to "My Services", "services/manage", class: "dropdown-item" %>
+              <%= link_to "My Services", manage_services_path, class: "dropdown-item" %>
             <% end %>
               <%= link_to "Client Bookings", bookings_path, class: "dropdown-item" %>
                <%= link_to "Manage Profile", "users/edit", class: "dropdown-item" %>
