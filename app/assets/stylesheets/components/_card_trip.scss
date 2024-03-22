@@ -1,5 +1,5 @@
 .card-trip {
-  width: 22%;
+  width: 100%;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -11,6 +11,7 @@
   height: 200px;
   width: 100%;
   object-fit: cover;
+  margin-bottom: 8px;
 }
 .card-trip h2 {
   font-size: 16px;
@@ -38,6 +39,12 @@
   align-items: baseline;
   padding-right: 8px;
 }
+
+.container-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 24px;
+  margin-bottom: 24px;
 
 .bookings-row {
   display: flex;

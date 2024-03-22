@@ -11,17 +11,6 @@ class ServicesController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: {service: service})
       }
     end
-
-    # searchbar function
-    if params[:query].present?
-      sql_subquery = <<~SQL
-        services.name @@ :query
-        OR services.address @@ :query
-        OR users.last_name @@ :query
-        OR users.first_name @@ :query
-      SQL
-      @services = @services.joins(:user).where(sql_subquery, query: params[:query])
-    end
   end
 
   def manage

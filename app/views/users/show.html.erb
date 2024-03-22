@@ -3,19 +3,21 @@
   <br>
   <h3>Services Provided:</h3>
 
-  <div class="container-card">
-    <br>
+  <div class="container-cards">
       <% @services.each do |service| %>
+      <%= link_to service_path(service), style: "text-decoration: none; color: black" do %>
       <div class="card-trip">
+        <% if service.photo.attached? %>
+          <%= cl_image_tag service.photo.key, height: 150, class: "card-image", crop: :fill %>
+        <% end %>
         <h2 style="text-align: center;"><%= service.name %></h2>
           <ul>
             <p><%= "Price: #{service.price}" %></p>
             <p><%= "Address: #{service.address}" %></p>
-            <h2><%= link_to "View Appointments", service_path(service), class: "btn btn-danger"%></h2>
           </ul>
       </div>
-      <br>
-      <% end %>
+        <% end %>
+        <% end %>
   </div>
 
 

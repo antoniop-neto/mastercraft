@@ -2,10 +2,13 @@ class UsersController < ApplicationController
   before_action :set_provider_boolean, :set_address
 
   def index
-    @user = User.all
-
+    if params[:query].present?
+      @users = User.global_search(params[:query])
+    else
+      @users = User.all
+    end
     # The `geocoded` scope filters only user with coordinates
-    @markers = @user.geocoded.map do |user|
+    @markers = @users.geocoded.map do |user|
       {
         lat: user.latitude,
         lng: user.longitude,
