@@ -12,13 +12,15 @@
 # clear the dabase
 Dayslot.delete_all
 Review.delete_all
+Message.delete_all
+Chatroom.delete_all
 Booking.delete_all
 Service.delete_all
 User.delete_all
 
 puts "adding users"
-user1 = User.create!(email: "peter@gmail.com", first_name: "Peter", last_name: "Parker", password: "123456", password_confirmation: "123456", start_hour: 9, end_hour: 17, provider: true, phone: "+44 20 7946 0018")
-user2 = User.create!(email: "jane@gmail.com", first_name: "Jane", last_name: "Austen", password: "123456", password_confirmation: "123456", start_hour: 10, end_hour: 16, provider: true, phone: "+49 173 4234 8349 ")
+user1 = User.create!(email: "peter@gmail.com", first_name: "Peter", last_name: "Parker", password: "123456", password_confirmation: "123456", provider: true, phone: "+44 20 7946 0018", start_hour: 9, end_hour: 17, start_date: Date.new(2024, 3, 25), end_date: Date.new(2024, 4, 5))
+user2 = User.create!(email: "jane@gmail.com", first_name: "Jane", last_name: "Austen", password: "123456", password_confirmation: "123456", provider: true, phone: "+49 173 4234 8349", start_hour: 10, end_hour: 16, start_date: Date.new(2024, 3, 25), end_date: Date.new(2024, 4, 5))
 user3 = User.create!(email: "barack@gmail.com", first_name: "Barack", last_name: "Obama", password: "123456", password_confirmation: "123456")
 
 puts "adding services"
@@ -29,24 +31,10 @@ service3 = Service.create!(user: user2, price: 150, name: "massage", address: "1
 puts "adding bookings"
 booking1 = Booking.create!(user: user2, service: service1, date: Date.new(2024, 3, 23), start_hour: 10)
 booking2 = Booking.create!(user: user2, service: service2, date: Date.new(2024, 3, 23), start_hour: 11)
-booking3 = Booking.create!(user: user3, service: service3, date: Date.new(2024, 3, 23), start_hour: 14)
+booking3 = Booking.create!(user: user3, service: service3, date: Date.new(2024, 3, 24), start_hour: 14)
 
 puts "adding reviews"
 review1 = Review.create!(booking: booking1, rating: 4.9, comment: "amaze")
 review2 = Review.create!(booking: booking2, rating: 5.0, comment: "perfection")
 
-
-puts "adding dayslots"
-start_date = Date.new(2024, 3, 25)
-end_date = Date.new(2024, 3, 29)
-
-(start_date..end_date).each do |date|
-  slots_array = (user1.start_hour..user1.end_hour-1).to_a
-  Dayslot.create!(date: date, slots: slots_array, user: user1)
-end
-
-(start_date..end_date).each do |date|
-  slots_array = (user2.start_hour..user2.end_hour-1).to_a
-  Dayslot.create!(date: date, slots: slots_array, user: user2)
-end
 puts "done"
