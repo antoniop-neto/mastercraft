@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'appointments', to: 'bookings#appointments', as: 'bookings_appointments'
 
   get "services/manage", to: "services#manage", as: :manage_services
+  get "services/manage", to: "user#edit"
+  patch "services/manage", to: "user#update"
+
   resources :services, only: [:index, :show, :new, :create, :destroy] do
     resources :bookings, only: [:new, :create]
   end
