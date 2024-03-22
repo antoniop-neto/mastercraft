@@ -4,7 +4,9 @@ class User < ApplicationRecord
   has_many :services, dependent: :destroy
   has_many :bookings, through: :services # , as: :received_bookings
   has_many :dayslots, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_one_attached :photo
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   geocoded_by :address

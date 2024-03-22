@@ -25,4 +25,8 @@ Rails.application.routes.draw do
   # As a user, I want to be able to view the list of available services a specific provider provides
   resources :users, only: [:index, :show]
 
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
+
 end
