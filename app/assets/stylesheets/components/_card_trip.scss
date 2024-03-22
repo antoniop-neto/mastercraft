@@ -45,4 +45,9 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 24px;
   margin-bottom: 24px;
+
+.bookings-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust gap between cards as needed */
 }
