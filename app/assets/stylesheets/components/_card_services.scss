@@ -1,4 +1,4 @@
-.card-trip {
+.card-services {
   width: 100%;
   overflow: hidden;
   background: white;
@@ -9,29 +9,39 @@
   position: relative;
 }
 
-.btn-delete {
+.card-services .btn-delete {
   position: absolute;
-  top: 24px;
+  top: 28px;
   right: 10px;
 }
 
-.card-trip > img {
+.btn-chat {
+  position: absolute;
+  top: 28px;
+  right: 80px;
+  color: green;
+}
+
+.card-services p {
+  padding-left: 8px;
+}
+.card-services > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
   margin-bottom: 8px;
 }
-.card-trip h2 {
+.card-services h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
-.card-trip p {
+.card-services p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
 }
-.card-trip .card-trip-infos {
+.card-services .card-trip-infos {
   padding: 8px;
   align-items: flex-start;
 }

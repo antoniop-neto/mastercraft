@@ -1,23 +1,23 @@
 <div class = "container">
   <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
   <br>
-  <h3>Services Provided:</h3>
+  <h3>Services:</h3>
 
   <div class="container-cards">
-      <% @services.each do |service| %>
-      <%= link_to service_path(service), style: "text-decoration: none; color: black" do %>
-      <div class="card-trip">
-        <% if service.photo.attached? %>
-          <%= cl_image_tag service.photo.key, height: 150, class: "card-image", crop: :fill %>
-        <% end %>
-        <h2 style="text-align: center;"><%= service.name %></h2>
-          <ul>
-            <p><%= "Price: #{service.price}" %></p>
-            <p><%= "Address: #{service.address}" %></p>
-          </ul>
+    <% @services.each do |service| %>
+    <%= link_to service_path(service), style: "text-decoration: none; color: black" do %>
+    <div class="card-trip">
+      <% if service.photo.attached? %>
+        <%= cl_image_tag service.photo.key, height: 150, class: "card-image", crop: :fill %>
+      <% end %>
+      <h2 style="text-align: center;"><%= service.name %></h2>
+        <ul>
+          <p><%= "Price: #{service.price}" %></p>
+          <p><%= "Address: #{service.address}" %></p>
+        </ul>
       </div>
-        <% end %>
-        <% end %>
+      <% end %>
+      <% end %>
   </div>
 
 

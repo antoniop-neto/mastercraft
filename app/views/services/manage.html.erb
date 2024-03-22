@@ -8,25 +8,17 @@
 
   <%= link_to "Create Service", new_service_path, class: "btn btn-info me-2" %>
 
-  <div class="card-product-container">
+<div class="container-cards">
     <% @services.each do |service| %>
-    <div class="card-trip">
-
-        <strong><%= service.name %></strong>
-
-        <div class="card-trip-infos">
-          <ul>
-            <p><%= "Price: #{service.price}" %></p>
-            <p><%= "Address: #{service.address}" %></p>
-            <h2>
-              <%= link_to service_path(service), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-danger" do %>
-                <i class="fa-solid fa-trash"></i>
-              <% end %>
-            </h2>
-          </ul>
-        </div>
-
-    </div>
-    <% end %>
+    <div class="card-services">
+      <h2 style="text-align: center;"><%= service.name %></h2>
+          <p><%= "Price: #{service.price}" %></p>
+          <p><%= "Address: #{service.address}" %></p>
+          <%= link_to service_path(service), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn-delete" do %>
+            <i class="fa-solid fa-trash"></i>
+      </div>
+      <% end %>
+      <% end %>
   </div>
+
 </div>
