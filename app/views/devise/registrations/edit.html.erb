@@ -21,11 +21,16 @@
       <%= f.input :password_confirmation,
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
+                  <%= f.input :provider, as: :boolean, label: "Are you a Provider?" %>
+      <%= f.input :start_date, label: "Providers Only: Start Date"%>
+      <%= f.input :end_date, label: "Providers Only: End Date" %>
+      <%= f.input :start_hour, label: "Providers Only: Start Hour"%>
+      <%= f.input :end_hour, label: "Providers Only: End Hour" %>
+      <%= f.input :photo, as: :file %>
       <%= f.input :current_password,
                   hint: "we need your current password to confirm your changes",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :photo, as: :file %>
     </div>
 
     <div class="form-actions">
