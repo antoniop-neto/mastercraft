@@ -8,6 +8,13 @@ class BookingsController < ApplicationController
     @grouped_bookings = @sorted_bookings.group_by { |booking| booking.date }
   end
 
+  def appointments
+    @booking = Booking.where(user_id: current_user.id)
+    @sorted_bookings = @booking.order(:date, :start_hour)
+    @grouped_bookings = @sorted_bookings.group_by { |booking| booking.date }
+  end
+
+
   def show
     @booking = Booking.find(params[:id])
     @chatroom = Chatroom.find_by(booking_id: params[:id])
@@ -57,13 +64,6 @@ class BookingsController < ApplicationController
     @booking.destroy
     redirect_to root_path, status: :see_other
   end
-
-  def appointments
-    @booking = Booking.where(user_id: current_user.id)
-    @sorted_bookings = @booking.order(:date, :start_hour)
-    @grouped_bookings = @sorted_bookings.group_by { |booking| booking.date }
-  end
-
 
   private
 
