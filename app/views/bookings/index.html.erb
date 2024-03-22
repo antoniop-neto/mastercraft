@@ -5,11 +5,9 @@
   <% else %>
     <h4>You don't have any client bookings yet.</h4>
   <% end %>
-  <br>
 <% @grouped_bookings.each do |date, bookings| %>
     <h3><%= date.strftime('%B %d, %Y') %></h3>
 <div class="container-cards">
-
      <% bookings.each do |booking| %>
     <div class="card-services">
       <h2 style="text-align: center;"><%= booking.service.name %></h2>
@@ -25,11 +23,4 @@
       <% end %>
       <% end %>
   </div>
-
-
-
-
-
-
-
 </div>
