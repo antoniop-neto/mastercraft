@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_provider_boolean, :set_address
+  before_action :set_provider_boolean, :set_address, :set_dayslots
 
   def index
     if params[:query].present?
@@ -40,6 +40,19 @@ class UsersController < ApplicationController
         # Directly using 'update' to change and save the user's address.
         # This is more efficient and concise.
       end
+    end
+  end
+
+  def set_dayslots
+    User.find_each do |user|
+      next if user.dayslot_set || !user.start_date || !user.end_date || !user.start_hour || !user.end_hour
+
+      (user.start_date..user.end_date).each do |date|
+        slots_array = (user.start_hour..user.end_hour-1).to_a
+        Dayslot.create!(date: date, slots: slots_array, user: user)
+      end
+      # update the boolean, so that each user only sets dayslots once
+      user.update(dayslot_set: true)
     end
   end
 end
