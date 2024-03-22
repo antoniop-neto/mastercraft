@@ -23,11 +23,14 @@
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://res.cloudinary.com/dsnkrdlih/image/upload/v1710449263/Screenshot_2024-03-14_at_20.46.51_nbubyh.png", class: "avatar", alt: "dropdown menu" %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Manage", "services/manage", class: "dropdown-item" %>
-              <%= link_to "Client Bookings", "bookings", class: "dropdown-item" %>
+            <% if current_user.provider? %>
+              <%= link_to "My Services", "services/manage", class: "dropdown-item" %>
+            <% end %>
+              <%= link_to "Client Bookings", bookings_path, class: "dropdown-item" %>
+               <%= link_to "Manage Profile", "users/edit", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
