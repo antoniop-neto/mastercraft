@@ -40,6 +40,7 @@ puts "adding reviews"
 review1 = Review.create!(booking: booking1, rating: 4.9, comment: "amaze")
 review2 = Review.create!(booking: booking2, rating: 5.0, comment: "perfection")
 review3 = Review.create!(booking: booking3, rating: 5.0, comment: "The massage slapped the literacy back into me, and I can finally speak English now! (#Trump)")
-review4 = Review.create!(booking: booking4, rating: 5.0, comment: "The most luxurious orange hair conditioning service you can get out there, I can really feel my orange glow!")
+review5 = Review.create!(booking: booking4, rating: 5.0, comment: "The most luxurious orange hair conditioning service you can get out there, I can really feel my orange glow!")
+
 
 puts "done"
