@@ -1,15 +1,20 @@
 <div class="container">
   <h1>Next Available Appointments for <%= @service.name %></h1>
-  <% if @service.photo.attached? %>
-    <%= cl_image_tag @service.photo.key, height: 150, width: 1000, crop: :fill %>
-  <% end %>
-  <br>
+
+<div class="container-card-bookings col-X">
   <% @dayslots.each do |dayslot|%>
-    <%= dayslot.date.strftime("%B %d, %Y") %>
-    <br>
-    <% dayslot.slots.each do |timeslot| %>
-      <%= link_to "#{timeslot}:00", new_service_booking_path(@service, date: dayslot.date, timeslot: timeslot), class: "btn btn-primary m-2" %>
-    <% end %>
-    <br>
-  <% end %>
+    <div class="card-bookings">
+
+        <h2><%= dayslot.date.strftime("%B %d, %Y") %></h2>
+
+        <div class="button-container">
+        <% dayslot.slots.each do |timeslot| %>
+        <%= link_to "#{timeslot}:00", new_service_booking_path(@service, date: dayslot.date, timeslot: timeslot), style: "text-decoration: none;", class: "time-button" %>
+        <% end %>
+        </div>
+
+
+    </div>
+<% end %>
+  </div>
 </div>
