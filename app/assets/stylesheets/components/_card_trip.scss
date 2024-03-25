@@ -22,12 +22,13 @@
   right: 10px;
 }
 
-.card-trip > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-  margin-bottom: 8px;
-}
+// .card-trip > img {
+//   height: 200px;
+//   width: 100%;
+//   object-fit: cover;
+//   margin-bottom: 8px;
+// }
+
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
@@ -38,10 +39,13 @@
   opacity: .7;
   margin: 0;
 }
-.card-trip .card-trip-infos {
-  padding: 8px;
-  align-items: flex-start;
+.card-trip-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
 }
+
 .container-card {
   display: flex;
   width: 100%;
@@ -57,7 +61,7 @@
 
 .container-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 24px;
   margin-bottom: 24px;
 }
@@ -71,4 +75,30 @@
 .light-gray-background {
   background-color: $light-gray; /* Light gray color */
   border-radius: 20px;
+}
+
+.dark-gray-background {
+  background-color: $dark-gray; /* Light gray color */
+  border-radius: 20px;
+}
+
+.white-background {
+  background-color: $white; /* Light gray color */
+  border-radius: 20px;
+  color: black;
+}
+
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar, .user-details {
+  margin-right: 10px; /* Add some space between the avatar and the details */
+}
+
+.user-details {
+  flex-grow: 1; /* Allows the details section to take up the remaining space */
+  min-width: 0; /* Prevents the flex item from growing beyond its allocated space */
 }

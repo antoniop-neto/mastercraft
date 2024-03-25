@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_provider_boolean, :set_address, :set_dayslots
+  before_action :set_provider_boolean, :set_address, :set_dayslots, :set_average_rating
 
   def index
     if params[:query].present?
@@ -53,6 +53,29 @@ class UsersController < ApplicationController
       end
       # update the boolean, so that each user only sets dayslots once
       user.update(dayslot_set: true)
+    end
+  end
+
+  def set_average_rating
+    User.find_each do |user|
+      total = 0
+      count = 0
+      user.services.each do |service|
+        service.bookings.each do |booking|
+          if booking.reviews.present?
+            booking.reviews.each do |review|
+              total += review.rating
+              count += 1
+            end
+          end
+        end
+      end
+      if count > 0
+        user.rating = total.to_f / count
+      else
+        user.rating = 0
+      end
+      user.save
     end
   end
 end

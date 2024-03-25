@@ -1,5 +1,8 @@
 <div class = "container">
   <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+  <div class="rating-stars">
+    <%= "Average Rating: #{'★' * @user.rating}" %>
+  </div>
   <br>
   <h3>Services:</h3>
 
