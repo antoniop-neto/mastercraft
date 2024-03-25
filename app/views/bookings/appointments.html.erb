@@ -13,28 +13,25 @@
      <div class="bookings-row">
       <% bookings.each do |booking| %>
           <div class="card-trip">
-              <strong style="font-size: 20px;" class= "btn btn-dark dark-button m-2"><%= booking.service.name %></strong>
+              <strong style="font-size: 20px;" class= "btn btn-dark dark-button mt-3 mb-2 service-name"><%= booking.service.name %></strong>
 
-              <div class="card-trip-infos">
-                <ul>
+              <div class="card-trip-infos white-background mx-5 py-2">
                   <p><%= "Start Hour: #{booking.start_hour}:00" %></p>
                   <p><%= "Provider: #{booking.service.user.first_name} #{booking.service.user.last_name} " %></p>
                   <p><%= "Price: #{booking.service.price}" %></p>
                   <p><%= "Address: #{booking.service.address}" %></p>
-                  <h2>
-                    <%= link_to new_booking_review_path(booking.id), class: "btn btn-dark dark-button m-2" do %>
-                      <i class="fa-solid fa-star"></i>
-                    <% end %>
-                    <%= link_to chatroom_path(booking.chatroom), class: "btn btn-dark dark-button m-2"  do %>
-                      <i class="fa-brands fa-rocketchat"></i>
-                    <% end %>
-                    <%= link_to booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-dark dark-button m-2" do %>
-                      <i class="fa-solid fa-trash"></i>
-                    <% end %>
-                  </h2>
-                </ul>
               </div>
-
+               <div class="mb-3">
+                  <%= link_to new_booking_review_path(booking.id), class: "btn btn-dark dark-button m-2" do %>
+                    <i class="fa-solid fa-star"></i>
+                  <% end %>
+                  <%= link_to chatroom_path(booking.chatroom), class: "btn btn-dark dark-button m-2"  do %>
+                    <i class="fa-brands fa-rocketchat"></i>
+                  <% end %>
+                  <%= link_to booking_path(booking), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-dark dark-button m-2" do %>
+                    <i class="fa-solid fa-trash"></i>
+                  <% end %>
+                </div>
           </div>
         <% end %>
       </div>

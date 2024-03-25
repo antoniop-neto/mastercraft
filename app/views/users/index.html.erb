@@ -16,23 +16,29 @@
       <% @users.each do |user| %>
         <% if user.provider == true %>
         <%= link_to user_path(user), style: "text-decoration: none; color: black" do %>
-
-            <div class="card-trip">
-              <% if user.photo.attached? %>
-                <%= cl_image_tag user.photo.key, height: 150, class: "card-image", crop: :fill %>
-              <% end %>
+            <div class="card-trip dark-gray-background">
               <div class="card-trip-infos">
-                <div>
-                  <h2 class= "btn btn-dark dark-button m-2"><%= "#{user.first_name} #{user.last_name}" %></h2>
-                  <p>Address: <%= user.services[0].address %></p>
-                  <p>Services:
-                    <% user.services.each do |service| %>
-                      <%= service.name %>
+                <h2 class= "btn btn-dark dark-button m-2"><%= "#{user.first_name} #{user.last_name}" %></h2>
+                <div class = "user-info">
+                  <div class = "user-avatar">
+                    <% if user.photo.attached? %>
+                      <%= cl_image_tag user.photo.key, class: "avatar", alt: "User avatar", crop: :fill %>
+                    <% else %>
+                      <%= image_tag "https://res.cloudinary.com/dsnkrdlih/image/upload/v1710449263/Screenshot_2024-03-14_at_20.46.51_nbubyh.png", class: "avatar", alt: "Default avatar" %>
                     <% end %>
-                  </p>
+                  </div>
+                  <div class = "user-details">
+                    <p style="color: white;"><%= user.services[0].address %></p>
+                    <div class="rating-stars">
+                      <%= "#{'★' * user.rating}" %>
+                    </div>
+                    <p style="color: white;">
+                      <% user.services.each do |service| %>
+                        <%= service.name %>
+                      <% end %>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="button-container">
               </div>
             </div>
           <% end %>
