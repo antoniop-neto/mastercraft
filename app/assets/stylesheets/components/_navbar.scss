@@ -10,3 +10,10 @@
 .navbar-lewagon .navbar-brand img {
   width: 150px;
 }
+
+.dropdown-menu-end[data-bs-popper] {
+  right: 0;
+  left: 0;
+  text-align: center;
+  background-color: white;
+}

@@ -1,0 +1,95 @@
+.container-card-users {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+}
+
+.card-users {
+  width: 100%;
+  overflow: hidden;
+  background: $light-gray;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 16px;
+  justify-content: space-between;
+  position: relative;
+  padding: 16px;
+  display: flex;
+  transition: box-shadow 0.3s ease;
+}
+
+.card-users:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  background-color: darken($light-gray, 50%);
+}
+
+.user-avatar {
+  // position: absolute;
+  width: 33%;
+  // top: 24px;
+  // left: 24px;
+  margin: 0;
+}
+
+.user-avatar .card-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.btn-delete {
+  position: absolute;
+  top: 24px;
+  right: 10px;
+}
+
+.card-users h2 {
+  font-size: 24px;
+  font-weight: bolder;
+  margin: 0;
+  color: white;
+}
+
+.user-details h4 {
+  font-size: 18px;
+  // flex-grow: 1; /* Allows the details section to take up the remaining space */
+  // min-width: 0; /* Prevents the flex item from growing beyond its allocated space */
+}
+
+.card-users p {
+  font-size: 14px;
+  opacity: .7;
+  margin: 0;
+}
+.card-user-infos {
+  // display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65%;
+}
+
+.bookings-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust gap between cards as needed */
+}
+
+.light-gray-background {
+  background-color: $light-gray; /* Light gray color */
+  border-radius: 20px;
+}
+
+.dark-gray-background {
+  background-color: $dark-gray; /* Light gray color */
+  border-radius: 20px;
+}
+
+.white-background {
+  background-color: $white; /* Light gray color */
+  border-radius: 20px;
+  color: black;
+}
+
+// .user-info {
+//   // display: flex;
+//   // align-items: center;
+// }
