@@ -1,13 +1,13 @@
 .card-services {
   width: 100%;
   overflow: hidden;
-  background: $light-gray;
+  background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 8px;
-  margin: 8px;
+  border-radius: 16px;
+  margin-bottom: 16px;
   justify-content: space-between;
+  background-color: #DDDD;
   position: relative;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .card-services:hover {
@@ -64,11 +64,10 @@
   padding-right: 8px;
 }
 
-.container-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 24px;
-  margin-bottom: 24px;
+.container-card-services {
+  display: block;
+  justify-content: center;
+  padding: 8px;
 }
 
 .bookings-row {

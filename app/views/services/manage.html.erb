@@ -8,7 +8,7 @@
 
   <%= link_to "Create Service", new_service_path, class: "btn btn-dark dark-button m-2" %>
 
-<div class="container-cards">
+<div class="container-card-services">
     <% @services.each do |service| %>
     <div class="card-services">
       <h2 style="text-align: center;"><%= service.name %></h2>

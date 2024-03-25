@@ -7,7 +7,7 @@
   <% end %>
 <% @grouped_bookings.each do |date, bookings| %>
     <h3><%= date.strftime('%B %d, %Y') %></h3>
-<div class="container-cards">
+<div class="container-card-services">
      <% bookings.each do |booking| %>
     <div class="card-services">
       <h2 style="text-align: center;" class= "btn btn-dark dark-button m-2"><%= booking.service.name %></h2>
