@@ -1,8 +1,8 @@
-<div class="container mt-5">
+<div class="container light-gray-background mx-3 px-4 py-3">
   <h1>Enter Review Details</h1>
   <%= simple_form_for([@booking, @review]) do |f| %>
-    <%= f.input :rating %>
-    <%= f.input :comment %>
-    <%= f.submit class: "btn btn-success" %>
+    <%= f.input :rating, input_html: { class: 'form-input' } %>
+    <%= f.input :comment, input_html: { class: 'form-input' } %>
+    <%= f.submit class: "btn btn-dark dark-button m-2" %>
   <% end %>
 </div>

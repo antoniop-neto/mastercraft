@@ -8,7 +8,7 @@
     <%= dayslot.date.strftime("%B %d, %Y") %>
     <br>
     <% dayslot.slots.each do |timeslot| %>
-      <%= link_to "#{timeslot}:00", new_service_booking_path(@service, date: dayslot.date, timeslot: timeslot), class: "btn btn-primary m-2" %>
+      <%= link_to "#{timeslot}:00", new_service_booking_path(@service, date: dayslot.date, timeslot: timeslot), class: "btn btn-dark dark-button m-2" %>
     <% end %>
     <br>
   <% end %>
