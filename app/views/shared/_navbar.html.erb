@@ -4,41 +4,31 @@
       <%= image_tag "https://res.cloudinary.com/dsnkrdlih/image/upload/v1711117665/Screenshot_2024-03-22_at_14.23.55_lx9t3p.png" %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <% if user_signed_in? && current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "User avatar" %>
+      <% else %>
+         <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "User avatar" %>
+         <% else %>
+          <%= image_tag "https://res.cloudinary.com/dsnkrdlih/image/upload/v1710449263/Screenshot_2024-03-14_at_20.46.51_nbubyh.png", class: "avatar", alt: "Default avatar" %>
+         <% end %>
+      <% end %>
+    </a>
 
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "User avatar" %>
-            <% else %>
-              <%= image_tag "https://res.cloudinary.com/dsnkrdlih/image/upload/v1710449263/Screenshot_2024-03-14_at_20.46.51_nbubyh.png", class: "avatar", alt: "Default avatar" %>
-            <% end %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-            <% if current_user.provider? %>
-              <%= link_to "My Services", manage_services_path, class: "dropdown-item" %>
-            <% end %>
-              <%= link_to "Home", "/", class: "dropdown-item" %>
-              <%= link_to "My Appointments", bookings_appointments_path, class: "dropdown-item" %>
-              <%= link_to "Client Bookings", bookings_path, class: "dropdown-item" %>
-              <%= link_to "Manage Profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
+    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+      <% if user_signed_in? %>
+        <%= link_to "My Appointments", bookings_appointments_path, class: "dropdown-item" %>
+        <%= link_to "Client Bookings", bookings_path, class: "dropdown-item" %>
+        <% if current_user.provider? %>
+          <%= link_to "My Services", manage_services_path, class: "dropdown-item" %>
         <% end %>
-      </ul>
+        <%= link_to "Manage Profile", edit_user_registration_path, class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
+      <% end %>
     </div>
   </div>
 </div>
