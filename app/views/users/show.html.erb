@@ -21,15 +21,31 @@
   </div>
 
 
-  <h3>Reviews</h3>
+
+<h3 class="">Reviews</h3>
+
+<div class="reviews-container">
   <% if @user.services.any? %>
-    <%  @user.services.each do |service| %>
+    <% @user.services.each do |service| %>
       <% if service.bookings.any? %>
         <% service.bookings.each do |booking| %>
           <% if booking.reviews.any? %>
             <% booking.reviews.each do |review| %>
-              <p><%= "Rating: #{review.rating}" %></p>
-              <p><%= "Comment: #{review.comment}" %></p>
+              <div class="review">
+                <div class="reviewer-info">
+                  <%# <%= "Name: #{review.user.name}" %>
+                  <%# <%= "Location: #{review.user.location}" %>
+                </div>
+                <div class="rating-stars">
+                  <%= "Rating: #{'★' * review.rating}" %>
+                </div>
+                <div class="review-comment">
+                  <%= "Comment: #{review.comment}" %>
+                </div>
+                <div class="review-timestamp">
+                  <%= "Posted: #{time_ago_in_words(review.created_at)} ago" %>
+                </div>
+              </div>
             <% end %>
           <% end %>
         <% end %>
