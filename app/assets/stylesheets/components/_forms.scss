@@ -1,0 +1,12 @@
+.form-input, .form-input:focus {
+  background-color: $dark-gray; /* Light grey background */
+  border: 1px solid #ccc; /* Light grey border */
+  color: white; /* Dark grey text */
+  border-radius: 20px;
+}
+
+/* Style for focusing on input */
+.form-input:focus {
+  border-color: #007bff; /* Bootstrap primary blue for focus */
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}

@@ -1,10 +1,8 @@
 <div class="container">
   <h1>Next Available Appointments for <%= @service.name %></h1>
-
-<div class="container-card-bookings col-X">
-  <% @dayslots.each do |dayslot|%>
-    <div class="card-bookings">
-
+  <div class="container-card-bookings col-X">
+    <% @dayslots.each do |dayslot|%>
+      <div class="card-bookings">
         <h2><%= dayslot.date.strftime("%B %d, %Y") %></h2>
 
         <div class="button-container">
@@ -12,9 +10,7 @@
         <%= link_to "#{timeslot}:00", new_service_booking_path(@service, date: dayslot.date, timeslot: timeslot), style: "text-decoration: none;", class: "time-button" %>
         <% end %>
         </div>
-
-
-    </div>
-<% end %>
+      </div>
+    <% end %>
   </div>
 </div>

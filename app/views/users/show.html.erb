@@ -10,7 +10,7 @@
       <% if service.photo.attached? %>
         <%= cl_image_tag service.photo.key, height: 150, class: "card-image", crop: :fill %>
       <% end %>
-      <h2 style="text-align: center;"><%= service.name %></h2>
+      <h2 style="text-align: center;" class= "btn btn-dark dark-button m-2"><%= service.name %></h2>
         <ul>
           <p><%= "Price: #{service.price}" %></p>
           <p><%= "Address: #{service.address}" %></p>

@@ -1,13 +1,14 @@
 .card-trip {
   width: 100%;
   overflow: hidden;
-  background: white;
+  background: $light-gray;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 8px;
   margin: 8px;
   justify-content: space-between;
   position: relative;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: center;
 }
 
 .card-trip:hover {
@@ -65,4 +66,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px; /* Adjust gap between cards as needed */
+}
+
+.light-gray-background {
+  background-color: $light-gray; /* Light gray color */
+  border-radius: 20px;
 }
