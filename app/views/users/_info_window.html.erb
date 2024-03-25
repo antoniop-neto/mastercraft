@@ -1,3 +1,18 @@
-<h2><%= user.first_name %></h2>
-<p><%= user.address %></p>
-<p>this is the info window</p>
+<%= link_to user_path(user), style: "text-decoration: none; color: black" do %>
+<div class="card-trip">
+  <% if user.photo.attached? %>
+    <%= cl_image_tag user.photo.key, height: 150, class: "card-image", crop: :fill %>
+  <% end %>
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= user.first_name %></h2>
+      <p><%= user.address %></p>
+      <p>Services:
+        <% user.services.each do |service| %>
+        <%= service.name %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
+<% end %>
