@@ -1,0 +1,37 @@
+.container-card-bookings {
+  display: block;
+  justify-content: center;
+  padding: 8px;
+}
+
+.card-bookings {
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 16px;
+  margin-bottom: 16px;
+  justify-content: space-between;
+  background-color: #DDDD;
+  position: relative;
+}
+
+.card-bookings h2 {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+  padding: 8px;
+}
+
+.time-button {
+  background-color: black;
+  border-radius: 16px;
+  color: white;
+  text-align: center;
+}
