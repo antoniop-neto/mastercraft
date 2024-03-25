@@ -1,0 +1,45 @@
+/* Add a container around the entire review section for styling */
+.reviews-container {
+
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+/* Style the individual review */
+.review {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style the last review differently to remove the border if needed */
+.review:last-child {
+  border-bottom: none;
+}
+
+/* Style the reviewer's name and details */
+.reviewer-info {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* Style the rating stars */
+.rating-stars {
+  color: #f5a623; /* Gold color */
+}
+
+/* Style the review comment */
+.review-comment {
+  font-size: 1.1em;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* Add additional styling for the timestamp */
+.review-timestamp {
+  font-size: 0.8em;
+  color: #999;
+  margin-top: 5px;
+}
