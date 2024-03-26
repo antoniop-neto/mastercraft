@@ -9,11 +9,7 @@
       <% if user_signed_in? && current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "User avatar" %>
       <% else %>
-         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "User avatar" %>
-         <% else %>
-          <%= image_tag "https://res.cloudinary.com/dsnkrdlih/image/upload/v1710449263/Screenshot_2024-03-14_at_20.46.51_nbubyh.png", class: "avatar", alt: "Default avatar" %>
-         <% end %>
+        <%= image_tag "https://res.cloudinary.com/dsnkrdlih/image/upload/v1710449263/Screenshot_2024-03-14_at_20.46.51_nbubyh.png", class: "avatar", alt: "Default avatar" %>
       <% end %>
     </a>
 
