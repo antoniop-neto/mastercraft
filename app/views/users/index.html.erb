@@ -1,42 +1,43 @@
-<div class="main-container">
+<div class="container">
   <div class="row justify-content-center my-3 mx-2">
     <div class="col-sm-8">
       <%= form_with url: users_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
               params[:query],
-              class: "form-control form-input",
+              class: "form-control form-input search-input",
               placeholder: "Type a keyword"
           %>
-        <%= submit_tag "Search", name: "", class: "btn btn-dark dark-button" %>
+        <%= submit_tag "Search", name: "", class: "dark-button" %>
       <% end %>
     </div>
   </div>
-  <div class="container mx-2">
-    <div class="container-cards">
+
+    <div class="container-card-users">
       <% @users.each do |user| %>
         <% if user.provider == true %>
         <%= link_to user_path(user), style: "text-decoration: none; color: black" do %>
-            <div class="card-trip dark-gray-background">
-              <div class="card-trip-infos">
-                <h2 class= "btn btn-dark dark-button m-2"><%= "#{user.first_name} #{user.last_name}" %></h2>
+            <div class="card-users dark-gray-background">
+              <div class = "user-avatar">
+                      <% if user.photo.attached? %>
+                        <%= cl_image_tag user.photo.key, class: "avatar-bordered", alt: "User avatar", crop: :fill %>
+                      <% else %>
+                        <%= image_tag "https://res.cloudinary.com/dsnkrdlih/image/upload/v1710449263/Screenshot_2024-03-14_at_20.46.51_nbubyh.png", class: "avatar-bordered", alt: "Default avatar" %>
+                      <% end %>
+                    </div>
+                <div class="card-user-infos">
+                <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
                 <div class = "user-info">
-                  <div class = "user-avatar">
-                    <% if user.photo.attached? %>
-                      <%= cl_image_tag user.photo.key, class: "avatar", alt: "User avatar", crop: :fill %>
-                    <% else %>
-                      <%= image_tag "https://res.cloudinary.com/dsnkrdlih/image/upload/v1710449263/Screenshot_2024-03-14_at_20.46.51_nbubyh.png", class: "avatar", alt: "Default avatar" %>
-                    <% end %>
-                  </div>
+
                   <div class = "user-details">
+                    <h4 style="color: white;">
+                      <% user.services.each do |service| %>
+                        <span><%= service.name %></span>
+                      <% end %>
+                    </h4>
                     <p style="color: white;"><%= user.services[0].address %></p>
                     <div class="rating-stars">
                       <%= "#{'★' * user.rating}" %>
                     </div>
-                    <p style="color: white;">
-                      <% user.services.each do |service| %>
-                        <%= service.name %>
-                      <% end %>
-                    </p>
                   </div>
                 </div>
               </div>
@@ -54,4 +55,3 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-</div>

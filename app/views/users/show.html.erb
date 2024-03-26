@@ -6,28 +6,30 @@
   <br>
   <h3>Services:</h3>
 
-  <div class="container-cards">
+  <div class="container-card-users">
     <% @services.each do |service| %>
     <%= link_to service_path(service), style: "text-decoration: none; color: black" do %>
-    <div class="card-trip">
+    <div class="card-users">
+    <div class="user-avatar">
       <% if service.photo.attached? %>
         <%= cl_image_tag service.photo.key, height: 150, class: "card-image", crop: :fill %>
       <% end %>
-      <h2 style="text-align: center;" class= "btn btn-dark dark-button m-2"><%= service.name %></h2>
-        <ul>
-          <p><%= "Price: #{service.price}" %></p>
-          <p><%= "Address: #{service.address}" %></p>
-        </ul>
+    </div>
+
+     <div class="card-user-infos">
+      <h2 style="text-align: center;" class= "dark-button"><%= service.name %></h2>
+      <h4><%= "Price: #{service.price}" %></h4>
+      <p><%= "Address: #{service.address}" %></p>
+     </div>
+
       </div>
       <% end %>
       <% end %>
   </div>
 
 
-
-<h3 class="">Reviews</h3>
-
 <div class="reviews-container">
+<h3 class="">Reviews</h3>
   <% if @user.services.any? %>
     <% @user.services.each do |service| %>
       <% if service.bookings.any? %>

@@ -3,7 +3,8 @@
   background-size: cover; /* Cover the entire div */
   background-position: center bottom; /* Center the background image */
   height: 500px; /* Set a specific height */
-    width: 100%; /* Make the div take up the full width */
+  width: 100%; /* Make the div take up the full width */
+
 }
 
 #background-image-list {
@@ -12,4 +13,9 @@
   background-position: center; /* Center the background image */
   height: 500px; /* Set a specific height */
     width: 100%; /* Make the div take up the full width */
+}
+
+.container ul{
+  list-style-type: none;
+  padding: 0;
 }
