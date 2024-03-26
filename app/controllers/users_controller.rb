@@ -7,7 +7,14 @@ class UsersController < ApplicationController
     else
       @users = User.all
     end
+  end
 
+  def map
+    if params[:query].present?
+      @users = User.global_search(params[:query])
+    else
+      @users = User.all
+    end
     # The `geocoded` scope filters only user with coordinates
     @markers = @users.geocoded.map do |user|
       {
