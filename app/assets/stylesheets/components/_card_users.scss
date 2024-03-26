@@ -12,7 +12,7 @@
   border-radius: 16px;
   justify-content: space-between;
   position: relative;
-  padding: 16px;
+  padding: 8px;
   display: flex;
   transition: box-shadow 0.3s ease;
 }
@@ -22,9 +22,10 @@
   background-color: darken($light-gray, 50%);
 }
 
-.user-avatar {
+.card-users .user-avatar {
   // position: absolute;
   width: 33%;
+  height: 100%;
   // top: 24px;
   // left: 24px;
   margin: 0;
@@ -32,7 +33,10 @@
 
 .user-avatar .card-image {
   width: 100%;
+  max-height: 100px;
   object-fit: cover;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
 }
 
 

@@ -2,7 +2,7 @@
   width: 100%;
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
   border-radius: 16px;
   margin-bottom: 16px;
   justify-content: space-between;
@@ -12,7 +12,7 @@
 
 .card-services:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
 }
 
 .card-services .btn-delete {

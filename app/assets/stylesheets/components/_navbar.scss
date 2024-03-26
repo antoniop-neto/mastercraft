@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,7 +12,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 150px;
+  width: 200px;
 }
 
 .dropdown-menu-end[data-bs-popper] {

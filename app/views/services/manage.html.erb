@@ -1,15 +1,17 @@
 <div class="container">
 
-  <div style="display: flex;">
-  <div class="container">
-    <h3><%= "Welcome #{@user.first_name} #{@user.last_name}," %></h3>
-    <% if @services.length > 0 %>
-    <h4>Services you are providing:</h4>
-    <% else %>
-      <h4>You don't have any service yet.</h4>
-    <% end %>
-  </div>
-      <%= link_to content_tag(:i, nil, class:"fa-solid fa-circle-plus"), new_service_path, style: "font-size: 50px; color: black; margin: 4px; text-decoration: none;" %>
+  <div class="d-flex">
+    <div class="container">
+      <h3><%= "Welcome #{@user.first_name} #{@user.last_name}," %></h3>
+      <% if @services.length > 0 %>
+      <h4>Services you are providing:</h4>
+      <% else %>
+        <h4>You don't have any service yet.</h4>
+      <% end %>
+    </div>
+    <div class="container-plus d-flex">
+      <%= link_to content_tag(:i, nil, class:"fa-solid fa-circle-plus"), new_service_path, style: "font-size: 50px; color: rgb(50, 50, 50); margin: 4px; text-decoration: none; padding: 0px;" %>
+    </div>
   </div>
 
   <div class="container-card-services">

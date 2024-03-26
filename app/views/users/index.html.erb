@@ -1,13 +1,14 @@
 <div class="container">
-  <div class="row justify-content-center my-3 mx-2">
-    <div class="col-sm-8">
+  <div class="row my-3 m-2">
+    <div class="col-sm-8", style="width: 100%; padding: 0px;">
       <%= form_with url: users_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
               params[:query],
+              style: "border-radius: 16px; border-bottom-right-radius: 0px; border-top-right-radius: 0px",
               class: "form-control form-input search-input",
               placeholder: "Type a keyword"
           %>
-        <%= button_tag type: "submit", class: "dark-button", style: "font-size: 20px", data: { disable_with: "" } do %>
+        <%= button_tag type: "submit", class: "dark-button", style: "font-size: 20px; border-bottom-left-radius: 0px; border-top-left-radius: 0px;", data: { disable_with: "" } do %>
          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
         <% end %>
 

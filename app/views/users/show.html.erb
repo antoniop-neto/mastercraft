@@ -1,60 +1,61 @@
 <div class = "container">
-  <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
-  <div class="rating-stars">
-    <%= "Average Rating: #{'★' * @user.rating}" %>
+  <div class="title-container">
+    <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+    <div class="rating-stars">
+      <%= "Average Rating: #{'★' * @user.rating}" %>
+    </div>
+    <br>
   </div>
-  <br>
-  <h3>Services:</h3>
 
   <div class="container-card-users">
     <% @services.each do |service| %>
     <%= link_to service_path(service), style: "text-decoration: none; color: black" do %>
     <div class="card-users">
-    <div class="user-avatar">
-      <% if service.photo.attached? %>
-        <%= cl_image_tag service.photo.key, height: 150, class: "card-image", crop: :fill %>
-      <% end %>
-    </div>
+      <div class="user-avatar">
+        <% if service.photo.attached? %>
+          <%= cl_image_tag service.photo.key, height: 150, class: "card-image", crop: :fill %>
+        <% end %>
+      </div>
 
-     <div class="card-user-infos">
-      <h2><%= service.name %></h2>
-      <h4><%= "Price: #{service.price.format}" %></h4>
-      <p><%= "Address: #{service.address}" %></p>
-     </div>
+      <div class="card-user-infos">
+        <h2><%= service.name %></h2>
+        <h4><%= "Price: #{service.price.format}" %></h4>
+        <p><%= "Address: #{service.address}" %></p>
+      </div>
 
       </div>
-      <% end %>
+        <% end %>
       <% end %>
   </div>
 
 
 <div class="reviews-container">
-<h3 class="">Reviews</h3>
-  <% if @user.services.any? %>
-    <% @user.services.each do |service| %>
-      <% if service.bookings.any? %>
-        <% service.bookings.each do |booking| %>
-          <% if booking.reviews.any? %>
-            <% booking.reviews.each do |review| %>
-              <div class="review">
-                <div class="reviewer-info">
-                  <%# <%= "Name: #{review.user.name}" %>
-                  <%# <%= "Location: #{review.user.location}" %>
+  <h3 class="">Reviews</h3>
+    <% if @user.services.any? %>
+      <% @user.services.each do |service| %>
+        <% if service.bookings.any? %>
+          <% service.bookings.each do |booking| %>
+            <% if booking.reviews.any? %>
+              <% booking.reviews.each do |review| %>
+                <div class="review">
+                  <div class="reviewer-info">
+                    <%# <%= "Name: #{review.user.name}" %>
+                    <%# <%= "Location: #{review.user.location}" %>
+                  </div>
+                  <div class="rating-stars">
+                    <%= "Rating: #{'★' * review.rating}" %>
+                  </div>
+                  <div class="review-comment">
+                    <%= "Comment: #{review.comment}" %>
+                  </div>
+                  <div class="review-timestamp">
+                    <%= "Posted: #{time_ago_in_words(review.created_at)} ago" %>
+                  </div>
                 </div>
-                <div class="rating-stars">
-                  <%= "Rating: #{'★' * review.rating}" %>
-                </div>
-                <div class="review-comment">
-                  <%= "Comment: #{review.comment}" %>
-                </div>
-                <div class="review-timestamp">
-                  <%= "Posted: #{time_ago_in_words(review.created_at)} ago" %>
-                </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
 </div>
