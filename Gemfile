@@ -4,7 +4,11 @@ ruby "3.1.2"
 
 gem "cloudinary"
 
+gem 'stripe'
+
 gem "pg_search"
+
+gem 'money-rails'
 
 gem "devise"
 

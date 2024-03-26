@@ -8,7 +8,7 @@
   width: 100%;
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
   border-radius: 16px;
   margin-bottom: 16px;
   justify-content: space-between;
@@ -16,9 +16,30 @@
   position: relative;
 }
 
+.card-bookings .chat-btn {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
 .card-bookings h2 {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
+  text-align: center;
+}
+
+.card-bookings h3 {
+  margin-top: 8px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.card-bookings h4 {
+  text-align: center;
+}
+
+.card-bookings p {
+  font-size: 18px;
   text-align: center;
 }
 

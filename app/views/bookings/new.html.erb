@@ -1,19 +1,24 @@
 <div class="container">
-  <%= simple_form_for([@service, @booking]) do |f| %>
-  <% if @selected_date.present? %>
-    <%= f.input :date, as: :hidden, input_html: { value: @selected_date } %>
-    <p>Selected date: <%= @selected_date %></p>
-  <% else %>
-    <%= f.input :date %>
-  <% end %>
+  <div class="container-card-bookings">
+    <div class="card-bookings", style="text-align: center;">
+      <%= simple_form_for([@service, @booking]) do |f| %>
+          <% if @selected_date.present? %>
+            <%= f.input :date, as: :hidden, input_html: { value: @selected_date } %>
+            <p>Selected date: <%= @selected_date %></p>
+          <% else %>
+            <%= f.input :date %>
+          <% end %>
 
-  <% if @selected_timeslot.present? %>
-    <%= f.input :start_hour, as: :hidden, input_html: { value: @selected_timeslot } %>
-    <p>Selected time: <%= "#{@selected_timeslot}:00" %></p>
-  <% else %>
-    <%= f.input :start_hour, collection: 0..23, prompt: "Select a Start Hour" %>
-  <% end %>
+          <% if @selected_timeslot.present? %>
+            <%= f.input :start_hour, as: :hidden, input_html: { value: @selected_timeslot } %>
+            <p>Selected time: <%= "#{@selected_timeslot}:00" %></p>
+          <% else %>
+            <%= f.input :start_hour, collection: 0..23, prompt: "Select a Start Hour" %>
+          <% end %>
 
-  <%= f.button :submit, 'Save' , class: "btn btn-dark dark-button m-2"%>
-<% end %>
+          <%= f.button :submit, 'Confirm' , class: "btn btn-dark dark-button m-2"%>
+          <%= link_to 'Cancel', service_path(@service), class: "btn btn-danger m-2" %>
+        <% end %>
+    </div>
+  </div>
 </div>

@@ -4,6 +4,7 @@ class Booking < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one :chatroom, dependent: :destroy
   after_create :create_private_chatroom
+  monetize :amount_cents
 
   private
 

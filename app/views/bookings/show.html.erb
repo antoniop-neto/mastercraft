@@ -1,9 +1,18 @@
 <div class="container">
-  <h3><%= @booking.service.name %></h3>
-  <p><%= "Provider: #{@booking.service.user.first_name} #{@booking.service.user.last_name}" %></p>
-  <p><%= "Date: #{@booking.date}" %></p>
-  <p><%= "Start Hour: #{@booking.start_hour}" %></p>
-  <p><%= "Address: #{@booking.service.address}" %></p>
+  <div class="container-card-bookings">
+    <div class="card-bookings">
+     <div style="display: flex;">
+      <div class="container">
+      <h3><%= @booking.service.name %></h3>
+          <p><%= "Professional: #{@booking.service.user.first_name} #{@booking.service.user.last_name}" %></p>
+          <h4><%= "Date: #{@booking.date}" %></h4>
+          <p><%= "Start Hour: #{@booking.start_hour}:00" %></p>
+          <p><%= "Address: #{@booking.service.address}" %></p>
+        </div>
+      </div>
+      <div class="chat-btn">
+        <%= link_to content_tag(:i, nil, class:"fa-brands fa-rocketchat"), chatroom_path(@chatroom), class: "dark-button m-2", style:"font-size: 30px" %>
+      </div>
+     </div>
+    </div>
 </div>
-
-<%= link_to "start chat", chatroom_path(@chatroom), class: "btn btn-dark dark-button m-2" %>

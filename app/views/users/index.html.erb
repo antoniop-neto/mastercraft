@@ -7,7 +7,10 @@
               class: "form-control form-input search-input",
               placeholder: "Type a keyword"
           %>
-        <%= submit_tag "Search", name: "", class: "dark-button" %>
+        <%= button_tag type: "submit", class: "dark-button", style: "font-size: 20px", data: { disable_with: "" } do %>
+         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        <% end %>
+
       <% end %>
     </div>
   </div>
@@ -16,7 +19,7 @@
       <% @users.each do |user| %>
         <% if user.provider == true %>
         <%= link_to user_path(user), style: "text-decoration: none; color: black" do %>
-            <div class="card-users dark-gray-background">
+            <div class="card-users">
               <div class = "user-avatar">
                       <% if user.photo.attached? %>
                         <%= cl_image_tag user.photo.key, class: "avatar-bordered", alt: "User avatar", crop: :fill %>
@@ -29,12 +32,12 @@
                 <div class = "user-info">
 
                   <div class = "user-details">
-                    <h4 style="color: white;">
+                    <h4>
                       <% user.services.each do |service| %>
                         <span><%= service.name %></span>
                       <% end %>
                     </h4>
-                    <p style="color: white;"><%= user.services[0].address %></p>
+                    <p><%= user.services[0].address %></p>
                     <div class="rating-stars">
                       <%= "#{'★' * user.rating}" %>
                     </div>

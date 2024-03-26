@@ -4,8 +4,6 @@
   background: $light-gray;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 8px;
-  margin: 8px;
-  justify-content: space-between;
   position: relative;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: center;
@@ -30,20 +28,24 @@
 // }
 
 .card-trip h2 {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
 .card-trip p {
-  font-size: 12px;
+  font-size: 16px;
   opacity: .7;
   margin: 0;
 }
 .card-trip-infos {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center horizontally */
-  align-items: center;
+  width: 95%;
+  background-color: white;
+  border-radius: 16px;
+  margin: 0 auto;
+}
+
+.card-trip-infos p{
+  font-size: 18px;
 }
 
 .container-card {
@@ -60,10 +62,9 @@
 }
 
 .container-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 24px;
-  margin-bottom: 24px;
+    display: block;
+    justify-content: center;
+    padding: 8px;
 }
 
 .bookings-row {

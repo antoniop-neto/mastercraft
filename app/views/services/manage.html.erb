@@ -1,19 +1,25 @@
 <div class="container">
-  <h3><%= "Welcome #{@user.first_name} #{@user.last_name}," %></h3>
-  <% if @services.length > 0 %>
-  <h4>Your Services</h4>
-  <% else %>
-    <h4>You don't have any services yet.</h4>
-  <% end %>
 
-  <%= link_to "Create Service", new_service_path, class: "btn btn-dark dark-button m-2" %>
+  <div style="display: flex;">
+  <div class="container">
+    <h3><%= "Welcome #{@user.first_name} #{@user.last_name}," %></h3>
+    <% if @services.length > 0 %>
+    <h4>Services you are providing:</h4>
+    <% else %>
+      <h4>You don't have any service yet.</h4>
+    <% end %>
+  </div>
+      <%= link_to content_tag(:i, nil, class:"fa-solid fa-circle-plus"), new_service_path, style: "font-size: 50px; color: black; margin: 4px; text-decoration: none;" %>
+  </div>
 
   <div class="container-card-services">
     <% @services.each do |service| %>
       <div class="card-trip">
-        <h2 style="text-align: center;" class= "btn btn-dark dark-button m-2"><%= service.name %></h2>
+        <h2 style="text-align: center;" class= "dark-button m-2"><%= service.name %></h2>
+        <div class="card-trip-infos">
           <p><%= "Price: #{service.price}" %></p>
           <p><%= "Address: #{service.address}" %></p>
+        </div>
           <%= link_to service_path(service), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} , class: "btn btn-dark dark-button m-2" do %>
             <i class="fa-solid fa-trash"></i>
           <% end %>

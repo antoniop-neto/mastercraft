@@ -5,6 +5,7 @@ class Service < ApplicationRecord
   has_one_attached :photo
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+  monetize :price_cents
 
   def users_have_booked
     self.bookings.map {|booking| booking.user }

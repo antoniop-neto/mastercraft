@@ -2,17 +2,16 @@
   <h3><%= "Welcome #{@user.first_name} #{current_user.last_name}," %></h3>
   <% if @sorted_bookings.length > 0 %>
     <h4>Your Client Bookings</h4>
-    <br>
   <% else %>
     <h4>You don't have any client bookings yet.</h4>
   <% end %>
   <% @grouped_bookings.each do |date, bookings| %>
+   <div class="container-cards">
     <h3><%= date.strftime('%B %d, %Y') %></h3>
-    <div>
       <% bookings.each do |booking| %>
         <div class="card-trip">
-        <h2 style="text-align: center;" class= "btn btn-dark dark-button m-2"><%= booking.service.name %></h2>
-            <div class="card-trip-infos white-background mx-5 py-2">
+            <h2 style="text-align: center;" class= "dark-button m-2"><%= booking.service.name %></h2>
+            <div class="card-trip-infos">
               <p><%= "Start Hour: #{booking.start_hour}:00" %></p>
               <p><%= "Customer: #{booking.user.first_name} #{booking.user.last_name} " %></p>
             </div>

@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
 
   resources :services, only: [:index, :show, :new, :create, :destroy] do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create] do
+      resources :payments, only: :new
+    end
   end
 
 

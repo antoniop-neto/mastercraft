@@ -3,19 +3,19 @@
   <% if @booking.length > 0 %>
   <h4>Your Appointments</h4>
   <% else %>
-    <h4>You don't have any appointments yet.</h4>
+    <h4>You don't have any appointment yet.</h4>
   <% end %>
   <br>
 
-  <div class="card-product-container">
+  <div class="container-card-services">
     <% @grouped_bookings.each do |date, bookings| %>
      <h3><%= date.strftime('%B %d, %Y') %></h3>
      <div class="bookings-row">
       <% bookings.each do |booking| %>
           <div class="card-trip">
-              <strong style="font-size: 20px;" class= "btn btn-dark dark-button mt-3 mb-2 service-name"><%= booking.service.name %></strong>
+              <h2 style="font-size: 20px;" class= "dark-button m-2"><%= booking.service.name %></h2>
 
-              <div class="card-trip-infos white-background mx-5 py-2">
+              <div class="card-trip-infos">
                   <p><%= "Start Hour: #{booking.start_hour}:00" %></p>
                   <p><%= "Provider: #{booking.service.user.first_name} #{booking.service.user.last_name} " %></p>
                   <p><%= "Price: #{booking.service.price}" %></p>
@@ -33,6 +33,7 @@
                   <% end %>
                 </div>
           </div>
+          <br>
         <% end %>
       </div>
     <% end %>

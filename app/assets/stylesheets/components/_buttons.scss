@@ -1,5 +1,5 @@
 .dark-button {
-  border-radius: 20px;
+  border-radius: 16px;
   font-family: 'Montserrat', sans-serif;
   background-color: black;
   color: white;
@@ -18,4 +18,10 @@
   font-family: 'Montserrat', sans-serif;
   background-color: white;
   color: black;
+}
+
+.btn-danger {
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 8px;
 }

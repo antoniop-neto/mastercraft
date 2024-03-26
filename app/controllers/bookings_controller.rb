@@ -33,8 +33,26 @@ class BookingsController < ApplicationController
     # @booking.service = @service
     @booking.user = current_user # getting the current user
     dayslots = @service.user.dayslots
+    @booking.amount = @service.price
+    @booking.state = "pending"
 
+    # Stripe
     if @booking.save
+      # session = Stripe::Checkout::Session.create(
+      #   payment_method_types: ['card'],
+      #   line_items: [{
+      #     name: @service.name,
+      #     amount: @service.price_cents,
+      #     currency: 'eur',
+      #     quantity: 1
+      #   }],
+      #   success_url: booking_url(@booking),
+      #   cancel_url: booking_url(@booking)
+      # )
+      # @booking.update(checkout_session_id: session.id)
+      # # Check after payment controller
+      # redirect_to new_booking_payment_path(@booking)
+
       # delete the timeslot
       dayslots.where(date: @booking.date).each do |dayslot|
         if dayslot.slots.include?(@booking.start_hour)

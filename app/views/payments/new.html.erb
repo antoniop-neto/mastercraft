@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row py-4">
+    <div class="col">
+      <h1>Checkout summary</h1>
+      <p>Purchase of <strong><%= @booking.service.name %></strong> for <strong><%= humanized_money_with_symbol @booking.amount %></strong></p>
+      <button id="pay" class="btn btn-primary">Pay</button>
+    </div>
+  </div>
+</div>
