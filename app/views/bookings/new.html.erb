@@ -4,14 +4,15 @@
       <%= simple_form_for([@service, @booking]) do |f| %>
           <% if @selected_date.present? %>
             <%= f.input :date, as: :hidden, input_html: { value: @selected_date } %>
-            <h3>Selected date: <%= @selected_date %></h3>
+            <h3><%= parsed_date = Date.parse(@selected_date)
+formatted_date = parsed_date.strftime("%B %d, %Y") %></h3>
           <% else %>
             <%= f.input :date %>
           <% end %>
 
           <% if @selected_timeslot.present? %>
             <%= f.input :start_hour, as: :hidden, input_html: { value: @selected_timeslot } %>
-            <h2>Selected time: <%= "#{@selected_timeslot}:00" %></h2>
+            <h2>at <%= "#{@selected_timeslot}:00" %></h2>
           <% else %>
             <%= f.input :start_hour, collection: 0..23, prompt: "Select a Start Hour" %>
           <% end %>

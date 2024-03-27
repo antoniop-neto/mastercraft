@@ -2,6 +2,15 @@
   max-width: 200px;
 }
 
+.mapboxgl-popup img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
