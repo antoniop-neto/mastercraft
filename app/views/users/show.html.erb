@@ -57,7 +57,6 @@
                     <% full_stars = review.rating.floor %>
                     <% half_star = (review.rating - full_stars >= 0.5) ? 1 : 0 %>
                     <% empty_stars = 5 - full_stars - half_star %>
-                    <%= "Rating:" %>
                     <% full_stars.times do %>
                       <i class="fa-solid fa-star"></i> <%# Full star %>
                     <% end %>
@@ -69,7 +68,7 @@
                     <% end %>
                   </div>
                   <div class="review-comment">
-                    <%= "Comment: #{review.comment}" %>
+                    <%= review.comment %>
                   </div>
                   <div class="review-timestamp">
                     <%= "Posted: #{time_ago_in_words(review.created_at)} ago" %>
