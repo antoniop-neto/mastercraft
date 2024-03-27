@@ -1,18 +1,19 @@
 <div class="container">
   <div class="container-card-bookings">
     <div class="card-bookings">
-     <div style="display: flex;">
-      <div class="card-bookings">
-      <h3><%= @booking.service.name %></h3>
-          <p><%= "Professional: #{@booking.service.user.first_name} #{@booking.service.user.last_name}" %></p>
-          <h4><%= "Date: #{@booking.date}" %></h4>
-          <p><%= "Start Hour: #{@booking.start_hour}:00" %></p>
+      <h3><%= @booking.service.name %>,</h3>
+          <p><%= "with: #{@booking.service.user.first_name} #{@booking.service.user.last_name}" %></p>
+          <p><%= "See you on" %></p>
+          <h4><%= "#{@booking.date.strftime("%B %d, %Y")}, #{@booking.start_hour}:00" %></h4>
           <p><%= "Address: #{@booking.service.address}" %></p>
-        </div>
-      </div>
-      <div class="chat-btn">
-        <%= link_to content_tag(:i, nil, class:"fa-brands fa-rocketchat"), chatroom_path(@chatroom), class: "dark-button m-2", style:"font-size: 30px" %>
       </div>
      </div>
+     <div class="d-flex container", style="padding-top: 8px; justify-content: space-between;">
+      <h4>Any question? Send me a DM:</h4>
+        <div class="chat-btn">
+          <%= link_to content_tag(:i, nil, class:"fa-brands fa-rocketchat"), chatroom_path(@chatroom), class: "dark-button m-2", style:"font-size: 30px" %>
+        </div>
+     </div>
+
     </div>
 </div>
