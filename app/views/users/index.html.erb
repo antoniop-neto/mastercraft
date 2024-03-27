@@ -40,7 +40,18 @@
                     </h4>
                     <p><%= user.services[0].address %></p>
                     <div class="rating-stars">
-                      <%= "#{'★' * user.rating}" %>
+                      <% full_stars = user.rating.floor %>
+                      <% half_star = (user.rating - full_stars >= 0.5) ? 1 : 0 %>
+                      <% empty_stars = 5 - full_stars - half_star %>
+                      <% full_stars.times do %>
+                        <i class="fa-solid fa-star"></i> <%# Full star %>
+                      <% end %>
+                      <% if half_star > 0 %>
+                        <i class="fa-solid fa-star-half"></i> <%# Half star %>
+                      <% end %>
+                      <% empty_stars.times do %>
+                        <i class="fa fa-star-o"></i> <%# Empty star %>
+                      <% end %>
                     </div>
                   </div>
                 </div>

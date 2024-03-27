@@ -2,7 +2,18 @@
   <div class="title-container">
     <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
     <div class="rating-stars">
-      <%= "Average Rating: #{'★' * @user.rating}" %>
+      <% full_stars = @user.rating.floor %>
+      <% half_star = (@user.rating - full_stars >= 0.5) ? 1 : 0 %>
+      <% empty_stars = 5 - full_stars - half_star %>
+      <% full_stars.times do %>
+        <i class="fa-solid fa-star"></i> <%# Full star %>
+      <% end %>
+      <% if half_star > 0 %>
+        <i class="fa-solid fa-star-half"></i> <%# Half star %>
+      <% end %>
+      <% empty_stars.times do %>
+        <i class="fa fa-star-o"></i> <%# Empty star %>
+      <% end %>
     </div>
     <br>
   </div>
@@ -43,7 +54,19 @@
                     <%# <%= "Location: #{review.user.location}" %>
                   </div>
                   <div class="rating-stars">
-                    <%= "Rating: #{'★' * review.rating}" %>
+                    <% full_stars = review.rating.floor %>
+                    <% half_star = (review.rating - full_stars >= 0.5) ? 1 : 0 %>
+                    <% empty_stars = 5 - full_stars - half_star %>
+                    <%= "Rating:" %>
+                    <% full_stars.times do %>
+                      <i class="fa-solid fa-star"></i> <%# Full star %>
+                    <% end %>
+                    <% if half_star > 0 %>
+                      <i class="fa-solid fa-star-half"></i> <%# Half star %>
+                    <% end %>
+                    <% empty_stars.times do %>
+                      <i class="fa fa-star-o"></i> <%# Empty star %>
+                    <% end %>
                   </div>
                   <div class="review-comment">
                     <%= "Comment: #{review.comment}" %>
