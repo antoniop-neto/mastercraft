@@ -1,14 +1,14 @@
-<div class="container">
+<div class="container light-gray-background mx-2 my-5">
   <h1>New Service</h1>
   <%= simple_form_for @service do |f| %>
       <ul>
           <li>
-            <%= f.input :name %>
-            <%= f.input :price %>
-            <%= f.input :address %>
+            <%= f.input :name, input_html: { class: 'form-input' } %>
+            <%= f.input :price, input_html: { class: 'form-input' } %>
+            <%= f.input :address, input_html: { class: 'form-input' } %>
             <%= f.input :photo, as: :file %>
           </li>
       </ul>
-      <%= f.button :submit, 'Save' %>
+      <%= f.button :submit, 'Save', class: "btn btn-dark dark-button m-2" %>
       <% end %>
 </div>
