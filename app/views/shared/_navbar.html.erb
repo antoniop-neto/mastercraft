@@ -15,7 +15,7 @@
 
     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
       <% if user_signed_in? %>
-        <%= link_to "Map", map_path, class: "dropdown-item" %>
+        <%= link_to "Map View", map_path, class: "dropdown-item" %>
         <%= link_to "My Appointments", bookings_appointments_path, class: "dropdown-item" %>
         <% if current_user.provider? %>
           <%= link_to "My Services", manage_services_path, class: "dropdown-item" %>
