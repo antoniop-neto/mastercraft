@@ -30,6 +30,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
     @service.user = current_user
+    @service.address = current_user.address
     if @service.save
       redirect_to root_path, notice: 'Service was successfully created.'
     else
@@ -48,5 +49,4 @@ class ServicesController < ApplicationController
   def service_params
     params.require(:service).permit(:name, :price, :address, photos: [])
   end
-
 end
