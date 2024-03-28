@@ -38,3 +38,31 @@
   border-width: 1px;
   transition: border-width 0.3s ease;
 }
+
+.btn-portfolio {
+  text-decoration: none;
+  border: solid rgb(50, 50, 50);
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(50, 50, 50);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-width: 1px;
+  transition: border-width 0.3s ease;
+}
+
+.btn-back {
+  width: 100%;
+  text-decoration: none;
+  border: solid rgb(50, 50, 50);
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(50, 50, 50);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-width: 1px;
+  transition: border-width 0.3s ease;
+  text-align: center;
+}

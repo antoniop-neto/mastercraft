@@ -1,0 +1,14 @@
+<div class="container" style="padding-left: 0px;">
+  <div class="container-portfolio">
+    <%= link_to "Back", user_path(@user), class: "btn-back" %>
+  </div>
+ <% @services.each do |service| %>
+  <% if service.photos.attached? %>
+    <% service.photos.each do |photo| %>
+    <div class="portfolio">
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

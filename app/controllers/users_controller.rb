@@ -26,6 +26,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def portfolio
+    @user = User.find(params[:id])
+    @services = @user.services
+  end
+
   def show
     @user = User.find(params[:id])
     @services = @user.services

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'appointments', to: 'bookings#appointments', as: 'bookings_appointments'
   get 'map', to: 'users#map', as: 'map'
 
+
   get "services/manage", to: "services#manage", as: :manage_services
   get "services/manage", to: "user#edit"
   patch "services/manage", to: "user#update"
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
 
   # As a user, I want to be able to view the list of available services a specific provider provides
   resources :users, only: [:index, :show]
+  get 'users/:id/portfolio', to: 'users#portfolio', as: 'portfolio'
 
   resources :chatrooms, only: :show do
     resources :messages, only: :create

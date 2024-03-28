@@ -1,6 +1,10 @@
 <div class = "container">
   <div class="title-container">
     <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+    <div class="container-portfolio">
+      <%= link_to "Portfolio", portfolio_path, class: "btn-back" %>
+    </div>
+
     <div class="rating-stars">
       <% full_stars = @user.rating.floor %>
       <% half_star = (@user.rating - full_stars >= 0.5) ? 1 : 0 %>
@@ -23,8 +27,8 @@
     <%= link_to service_path(service), style: "text-decoration: none; color: black" do %>
     <div class="card-users">
       <div class="user-avatar">
-        <% if service.photo.attached? %>
-          <%= cl_image_tag service.photo.key, height: 150, class: "card-image", crop: :fill %>
+        <% if service.photos.attached? %>
+          <%= cl_image_tag service.photos.sample.key, height: 150, class: "card-image", crop: :fill %>
         <% end %>
       </div>
 
