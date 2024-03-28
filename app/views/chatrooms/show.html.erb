@@ -4,7 +4,7 @@
 >
   <div class="container-portfolio">
   <% if current_user.provider %>
-    <%= link_to "Back", bookings_path, class:"btn-back" %>
+    <%= link_to "Client Booking", bookings_path, class:"btn-back" %><%= link_to "My Appointments", bookings_appointments_path, class:"btn-back" %>
   <% else %>
     <%= link_to "My Appointments", bookings_appointments_path, class:"btn-back" %>
   <% end %>
