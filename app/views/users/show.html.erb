@@ -2,6 +2,7 @@
   <div class="title-container">
     <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
     <div class="container-portfolio">
+      <%= link_to "Back", users_path, class:"btn-back" %>
       <%= link_to "Portfolio", portfolio_path, class: "btn-back" %>
     </div>
 

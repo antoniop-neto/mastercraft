@@ -2,6 +2,14 @@
   data-controller="chatroom-subscriptions"
   data-chatroom-subscriptions-chatroom-id-value="<%= @chatroom.id %>"
 >
+  <div class="container-portfolio">
+  <% if current_user.provider %>
+    <%= link_to "Back", bookings_path, class:"btn-back" %>
+  <% else %>
+    <%= link_to "My Appointments", bookings_appointments_path, class:"btn-back" %>
+  <% end %>
+  </div>
+
   <h1>DM</h1>
   <div class="messages" data-chatroom-subscriptions-target="messages">
     <% @chatroom.messages.each do |message| %>
@@ -16,7 +24,9 @@
       label: false,
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-dark mb-3" %>
+     <%= button_tag type: "submit", class: "btn btn-dark mb-3", style:"font-size: 24px" do %>
+      <i class="fa-solid fa-paper-plane"></i>
+      <% end %>
   <% end %>
 
 </div>

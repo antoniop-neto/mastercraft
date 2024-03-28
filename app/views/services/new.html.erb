@@ -1,4 +1,7 @@
 <div class="container">
+  <div>
+    <%= link_to content_tag(:i, nil, class:"fa-solid fa-circle-left"), manage_services_path, style:"color:rgb(50, 50, 50); font-size:50px; " %>
+  </div>
   <div class="container light-gray-background">
     <h1>New Service</h1>
     <%= simple_form_for @service do |f| %>
